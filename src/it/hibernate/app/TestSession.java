@@ -69,6 +69,11 @@ public class TestSession {
 		factory = new Configuration().configure("hibernate.cfg.xml")
 				.addAnnotatedClass(Student.class)
 				.buildSessionFactory();		
-		readAll();										
+		Student student = factory.openSession().get(Student.class, 1);
+		student.setFirstName("Alessandro");
+		student.setLastName("Rossi");
+		student.setEmail("alessandrorossi@gmail.com");
+		update(student);
+		
 	}
 }
